@@ -18,10 +18,12 @@ function getParsedData() {
 
 // Fetch all books
 const fetchAllBooks = (req, res) => {
+    const parsedData = getParsedData();
+
     res.status(200).json({
         success: true,
         message: "successfully fetch all books",
-        data: "N/A"
+        data: parsedData
     })
 }
 
