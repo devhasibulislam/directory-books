@@ -18,17 +18,20 @@ function getParsedData() {
 
 // Fetch all books
 const fetchAllBooks = (req, res) => {
-    const parsedData = getParsedData();
+    const parsedBooks = getParsedData();
 
     res.status(200).json({
         success: true,
         message: "successfully fetch all books",
-        data: parsedData
+        data: parsedBooks
     })
 }
 
 // Insert a new book
 const insertABook = (req, res) => {
+    // const newBook = req.body;
+    // const parsedBooks = getParsedData();
+
     res.status(200).json({
         success: true,
         message: "successfully insert a new book",
