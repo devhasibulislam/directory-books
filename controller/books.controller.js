@@ -8,9 +8,12 @@
 // external import
 const fs = require("fs");
 
-// Get parsed data from buffered data
+// global path
+const path = __dirname + "/../public/books.json";
+
+// get parsed data from buffered data
 function getParsedData() {
-    const bufferedData = fs.readFileSync(__dirname + "/../public/books.json");
+    const bufferedData = fs.readFileSync(path);
     const parsedData = JSON.parse(bufferedData);
 
     return parsedData;
@@ -29,13 +32,16 @@ const fetchAllBooks = (req, res) => {
 
 // Insert a new book
 const insertABook = (req, res) => {
-    // const newBook = req.body;
-    // const parsedBooks = getParsedData();
+    const newBook = req.body;
+    const parsedBooks = getParsedData();
+    parsedBooks.push(newBook);
+    const stringifiedBooks = JSON.stringify(parsedBooks);
+
+    fs.writeFileSync(path, stringifiedBooks);
 
     res.status(200).json({
         success: true,
         message: "successfully insert a new book",
-        data: "N/A"
     })
 }
 
