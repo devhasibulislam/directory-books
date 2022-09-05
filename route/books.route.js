@@ -25,6 +25,10 @@ router.get("/", fetchAllBooks);
 router.post("/insert", insertABook);
 router.get("/:id", fetchABook);
 router.put("/:id", updateABook);
+<<<<<<< HEAD
 router.delete("/:id", deleteABook);
+=======
+router.delete("/:id", deleteABook)
+>>>>>>> 61c57048a1730c713e92d48c84977f9f7ff7a87d
 
 module.exports = router;
