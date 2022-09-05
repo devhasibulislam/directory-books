@@ -1,6 +1,9 @@
 {
   "name": "directory-books",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.x"
+  },
   "description": "Building up a directory of books",
   "main": "index.js",
   "scripts": {
