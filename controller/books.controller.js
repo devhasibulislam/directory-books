@@ -60,6 +60,27 @@ const fetchABook = (req, res) => {
 
 // Update a require book
 const updateABook = (req, res) => {
+    const { id } = req.params;
+    const bookInfo = req.body;
+    const parsedBooks = getParsedData();
+    const requireBook = parsedBooks.find(book => book._id === Number(id));
+
+    parsedBooks[Number(id - 1)] = {
+        _id: requireBook._id,
+        title: bookInfo.title || requireBook.title,
+        description: bookInfo.description || requireBook.description,
+        isbn: bookInfo.isbn || requireBook.isbn,
+        publish: bookInfo.publish || requireBook.publish,
+        user: bookInfo.user || requireBook.user,
+        avatar: bookInfo.avatar || requireBook.avatar,
+        email: bookInfo.email || requireBook.email,
+        phone: bookInfo.phone || requireBook.phone,
+        gender: bookInfo.gender || requireBook.gender,
+    };
+
+    const stringifiedUpdateBook = JSON.stringify(parsedBooks);
+    fs.writeFileSync(path, stringifiedUpdateBook);
+
     res.status(200).json({
         success: true,
         message: "successfully update the require book",
