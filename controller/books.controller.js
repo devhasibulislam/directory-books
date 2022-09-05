@@ -5,11 +5,22 @@
  * Date: 05/09/2022
  */
 
+// external import
+const fs = require("fs");
+
+// Get parsed data from buffered data
+function getParsedData() {
+    const bufferedData = fs.readFileSync(__dirname + "/../public/books.json");
+    const parsedData = JSON.parse(bufferedData);
+
+    return parsedData;
+}
+
 // Fetch all books
 const fetchAllBooks = (req, res) => {
     res.status(200).json({
         success: true,
-        message: "successfully fetched all books",
+        message: "successfully fetch all books",
         data: "N/A"
     })
 }
