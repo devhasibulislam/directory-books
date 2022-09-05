@@ -4,3 +4,25 @@
  * Author: Hasibul Islam
  * Date: 05/09/2022
  */
+
+// external import
+const express = require("express");
+
+// internal import
+
+// application level connection
+const app = express();
+const port = process.env.PORT || 3000;
+
+// middleware connection
+app.use(express.json());
+app.use(express.static("public"));
+
+// enable requests
+app.get("/", (req, res) => {
+    res.status(200).sendFile(__dirname + "/index.html");
+});
+
+app.listen(port, () => {
+    console.log(`Books directory app listening on port ${port}`);
+});
