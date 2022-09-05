@@ -9,6 +9,7 @@
 const express = require("express");
 
 // internal import
+const router = require("./route/books.route");
 
 // application level connection
 const app = express();
@@ -17,6 +18,7 @@ const port = process.env.PORT || 3000;
 // middleware connection
 app.use(express.json());
 app.use(express.static("public"));
+app.use("/books", router);
 
 // enable requests
 app.get("/", (req, res) => {
