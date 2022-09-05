@@ -39,7 +39,7 @@ const insertABook = (req, res) => {
 
     fs.writeFileSync(path, stringifiedBooks);
 
-    res.status(200).json({
+    res.status(201).json({
         success: true,
         message: "successfully insert a new book",
     })
@@ -63,7 +63,6 @@ const updateABook = (req, res) => {
     res.status(200).json({
         success: true,
         message: "successfully update the require book",
-        data: "N/A"
     })
 }
 
