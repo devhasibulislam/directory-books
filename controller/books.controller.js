@@ -47,10 +47,14 @@ const insertABook = (req, res) => {
 
 // Fetch a require book
 const fetchABook = (req, res) => {
+    const parsedBooks = getParsedData();
+    const { id } = req.params;
+    const requireBook = parsedBooks.find(book => book._id === Number(id));
+
     res.status(200).json({
         success: true,
-        message: "successfully fetched the require book",
-        data: "N/A"
+        message: "successfully fetch the require book",
+        data: requireBook
     })
 }
 
