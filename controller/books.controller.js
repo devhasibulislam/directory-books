@@ -89,10 +89,16 @@ const updateABook = (req, res) => {
 
 // Delete a require book
 const deleteABook = (req, res) => {
+    const { id } = req.params;
+    const parsedBooks = getParsedData();
+    const elseDeletedBooks = parsedBooks.filter(book => book._id !== Number(id));
+    const stringifiedBooks = JSON.stringify(elseDeletedBooks);
+
+    fs.writeFileSync(path, stringifiedBooks);
+
     res.status(200).json({
         success: true,
         message: "successfully delete the require book",
-        data: "N/A"
     })
 }
 
